@@ -32,7 +32,10 @@ Your mission is to bring code coverage under the chatHub folder to above 95%.
 		- Update agent
 		- ...
 - Do NOT assert:
+	- Store state directly (e.g., `chatStore.getActiveMessages()`)
 	- Calls of functions using `toHaveBeenCalled`
+- Always verify through the UI, not internal state
+- Always wait for UI cues (e.g., `await findByRole()`, `await findByText()`), never use arbitrary timeouts like `setTimeout()` or `new Promise(resolve => setTimeout(resolve, 200))`
 
 ## Measuring Coverage
 
@@ -84,7 +87,7 @@ Test files are collocated with their source modules in the `chatHub/` directory.
 |--------|--------------|------------|--------|
 | `chat.utils.test.ts` | 12 | 0 | ✅ Complete |
 | `chat.store.test.ts` | 2 | 13 | 🟡 In Progress |
-| `ChatView.test.ts` | 2 | 11 | 🟡 In Progress |
+| `ChatView.test.ts` | 3 | 11 | 🟡 In Progress |
 | `ChatAgentsView.test.ts` | 1 | 10 | 🟡 Started |
 | `ChatMessage.test.ts` | 1 | 4 | 🟡 Started |
 | `ChatPrompt.test.ts` | 1 | 7 | 🟡 Started |
@@ -92,7 +95,7 @@ Test files are collocated with their source modules in the `chatHub/` directory.
 | `ModelSelector.test.ts` | 1 | 3 | 🟡 Started |
 | `CredentialSelectorModal.test.ts` | 1 | 2 | 🟡 Started |
 
-**Total:** 22 tests passing | 53 tests todo
+**Total:** 23 tests passing | 53 tests todo
 
 ## Progress Notes
 
