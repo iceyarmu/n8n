@@ -44,7 +44,7 @@ export class ChatHubSessionRepository extends Repository<ChatHubSession> {
 
 	async updateChatSession(id: string, updates: Partial<ChatHubSession>, trx?: EntityManager) {
 		return await withTransaction(this.manager, trx, async (em) => {
-			await em.update(ChatHubSession, { id }, updates);
+			await em.update(ChatHubSession, { id }, updates as any);
 			return await em.findOneOrFail(ChatHubSession, {
 				where: { id },
 				relations: ['messages'],
